@@ -58,79 +58,79 @@
                     case 1:
                         Console.Write("Enter account number: ");
                         accountNumber = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"Saved → Account number: {accountNumber}");
+                        Console.WriteLine($"set Account number: {accountNumber}");
                         break;
 
                     case 2:
                         Console.Write("Enter Holder Name: ");
                         holderName = Console.ReadLine();
-                        Console.WriteLine($"Saved → Holder Name: {holderName}");
+                        Console.WriteLine($"set Holder Name: {holderName}");
                         break;
 
                     case 3:
                         Console.Write("Enter Balance: ");
                         balance = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine($"Saved → Balance: {balance:F3} OMR");
+                        Console.WriteLine($"set Balance: {balance:F3} OMR");
                         break;
 
                     case 4:
                         Console.Write("Enter 1=Active / 0=Inactive: ");
                         isActive = Convert.ToInt32(Console.ReadLine()) == 1;
-                        Console.WriteLine($"Saved → Active: {isActive}");
+                        Console.WriteLine($"set Active: {isActive}");
                         break;
 
                     case 5:
                         Console.Write("Enter Account Type (S/C/F): ");
                         accountType = Convert.ToChar(Console.ReadLine().ToUpper());
-                        Console.WriteLine($"Saved → Type: {accountType}");
+                        Console.WriteLine($"set Type: {accountType}");
                         break;
 
                     case 6:
                         Console.Write("Enter 1=Employed / 0=Not: ");
                         isEmployed = Convert.ToInt32(Console.ReadLine()) == 1;
-                        Console.WriteLine($"Saved → Employed: {isEmployed}");
+                        Console.WriteLine($"set Employed: {isEmployed}");
                         break;
 
                     case 7:
                         Console.Write("Enter Salary: ");
                         salary = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine($"Saved → Salary: {salary:F3} OMR");
+                        Console.WriteLine($"set Salary: {salary:F3} OMR");
                         break;
 
                     case 8:
                         Console.Write("Enter Credit Score: ");
                         creditScore = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"Saved → Credit Score: {creditScore}");
+                        Console.WriteLine($"set Credit Score: {creditScore}");
                         break;
 
                     case 9:
                         Console.Write("Enter Age: ");
                         age = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"Saved → Age: {age}");
+                        Console.WriteLine($"set Age: {age}");
                         break;
 
                     case 10:
                         Console.Write("Enter Deposit: ");
                         deposit = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine($"Saved → Deposit: {deposit:F3} OMR");
+                        Console.WriteLine($"set Deposit: {deposit:F3} OMR");
                         break;
 
                     case 11:
                         Console.Write("Enter Withdrawal: ");
                         withdrawal = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine($"Saved → Withdrawal: {withdrawal:F3} OMR");
+                        Console.WriteLine($"set Withdrawal: {withdrawal:F3} OMR");
                         break;
 
                     case 12:
                         Console.Write("Enter Interest Rate: ");
                         annualRate = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine($"Saved → Rate: {annualRate:F3}%");
+                        Console.WriteLine($"set Rate: {annualRate:F3}%");
                         break;
 
                     case 13:
                         Console.Write("Enter Avg Balance: ");
                         avgBalance = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine($"Saved → Avg Balance: {avgBalance:F3} OMR");
+                        Console.WriteLine($"set Avg Balance: {avgBalance:F3} OMR");
                         break;
 
                     case 0:
