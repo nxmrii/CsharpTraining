@@ -2,6 +2,9 @@
 {
     internal class Program
     {
+        public static int MAX_ATTEMPTS { get; private set; }
+        public static int CORRECT_PIN { get; private set; }
+
         static void Main(string[] args)
         {
             //variables
@@ -41,6 +44,7 @@
                 Console.WriteLine("13) Enter average monthly balance");
                 Console.WriteLine("0)  Setup complete — launch Main Menu");
                 Console.Write("\nSelect option: ");
+
             int option = -1;
             while (option != 0)
             {
@@ -249,6 +253,115 @@
                         break;
                 }
             }
+
+            //=================================================================================
+
+
+            // Task 4 - ATM validation
+            Console.WriteLine(" === AUTHENTICATION ===");
+            Console.WriteLine("1) Enter PIN ");
+            Console.WriteLine("2) Forgot PIN ");
+            Console.WriteLine("0) Back");
+
+            const int CORRECT_PIN = 4821;
+            const int MAX_ATTEMPTS = 3;
+            int auth = -1;
+
+            while (auth != 0)
+            {
+                Console.Write("\nSelect: ");
+                auth = Convert.ToInt32(Console.ReadLine());
+
+                switch (auth)
+                {
+                    // Enter PIN
+                    case 1:
+                        int attempts = 0;
+                        bool accessGranted = false;
+
+                        while (attempts < MAX_ATTEMPTS && !accessGranted)
+                        {
+                            Console.Write("Enter PIN: ");
+                            string pinInput = "";
+                            ConsoleKeyInfo key;
+
+                            // Hidden PIN input
+                            do
+                            {
+                                key = Console.ReadKey(true);
+
+                                if (key.Key != ConsoleKey.Enter)
+                                {
+                                    pinInput += key.KeyChar;
+                                    Console.Write("*");
+                                }
+
+                            } while (key.Key != ConsoleKey.Enter);
+
+                            Console.WriteLine();
+                            // here is problem, becaues also when i press in delete key so =  i will ask mr.karim!!
+
+
+                            /* while (true)
+        {
+            keyInfo = Console.ReadKey(intercept: true); // Do not show key
+
+            // If Enter is pressed, stop reading
+            if (keyInfo.Key == ConsoleKey.Enter)
+            {
+                Console.WriteLine(); // Move to next line
+                break;
+            }
+            // Handle Backspace
+            else if (keyInfo.Key == ConsoleKey.Backspace)
+            {
+                if (password.Length > 0)
+                {
+                    password.Remove(password.Length - 1, 1);
+                    Console.Write("\b \b"); // Remove last '*'
+                }
+            }       */
+
+
+
+                            if (pinInput.Length != 4)
+                            {
+                                Console.WriteLine("Invalid PIN format.");
+                            }
+                            else if (Convert.ToInt32(pinInput) == CORRECT_PIN)
+                            {
+                                Console.WriteLine($"Access granted. Welcome, {holderName}");
+                                accessGranted = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Incorrect PIN.");
+                                attempts++;
+                            }
+                        }
+                        break;
+
+                    // Forgot PIN
+                    case 2:
+                        Console.WriteLine("Please visit the nearest branch with your National ID.");
+                        break;
+
+                    // Back..
+                    case 0:
+                        Console.WriteLine("Returning...");
+                        break;
+
+                    // Invalid option..
+                    default:
+                        Console.WriteLine("Invalid selection.");
+                        break;
+                }
+            }
+
+
+
+            //=================================================================================
+
         }
     }
     }
