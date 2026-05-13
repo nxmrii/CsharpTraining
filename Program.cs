@@ -362,7 +362,108 @@
 
             //=================================================================================
 
+
+            // Task 5 -  prints receipt data = only display the info will get from task 1
+            Console.WriteLine(" === Print Receipt === ");
+            Console.WriteLine("1) Short Receipt");
+            Console.WriteLine("2) Detailed Receipt");
+            Console.WriteLine("3) Balance Only");
+            Console.WriteLine("0) Back");
+
+            int recepit = -1;
+            while (recepit != 0) {
+                Console.WriteLine("\nSelect format: ");
+                recepit = Convert.ToInt32(Console.ReadLine());
+
+                switch (recepit)
+                {
+
+                    // short recepit
+                    case 1:
+                        //  string accstr = accountNumber.ToString(); // convert the account num to string because the substring only works in string
+                        string maskaccount = "****" + (accountNumber % 10000);
+
+                        Console.WriteLine(" === Short Receipt ===");
+                        Console.WriteLine("Account   : " + maskaccount);
+                        Console.WriteLine("Holder    : " + holderName);
+                        Console.WriteLine("Balance   : " + balance.ToString("F3") + " OMR");
+                        break;
+
+                    // Detailed Receipt
+                    case 2:
+                        Console.WriteLine(" === DETAILED RECEIPT === ");
+                        Console.WriteLine("Account Number: " + accountNumber);
+                        Console.WriteLine("Holder Name: " + holderName);
+                        Console.WriteLine("Balance: " + balance.ToString("F3") + "OMR");
+                        Console.WriteLine("Account Status: " + isActive);
+                        Console.WriteLine("Account Type: " + accountType);
+                        Console.WriteLine("Age: " + age);
+                        Console.WriteLine("Credit score: " + creditScore);
+                        break;
+
+
+                    // balance only
+                    case 3:
+                        Console.WriteLine(" === Balance Only === ");
+                        Console.WriteLine("Balance " + balance.ToString("F3") + "OMR");
+                        break;
+
+
+
+                    // Back..
+                    case 0:
+                        Console.WriteLine("Returning to ATM Services...");
+                        break;
+
+
+                    // defult
+                    default:
+                        Console.WriteLine("Invalid receipt format.");
+                        break;
+                }
+            }
+
+
+
+
+            //=================================================================================
+
+
+            // Task 6 - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
     }
+    
 
