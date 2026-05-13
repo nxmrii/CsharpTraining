@@ -21,8 +21,6 @@
             bool setupCompleted = false;
 
             // Task 1 - system setup
-           
-                
                 Console.WriteLine(" National Bank Of Oman - System Setup ");
                 Console.WriteLine("\n--- Account & Customer Data ---\n");
 
@@ -42,12 +40,8 @@
                 Console.WriteLine("12) Enter annual interest rate");
                 Console.WriteLine("13) Enter average monthly balance");
                 Console.WriteLine("0)  Setup complete — launch Main Menu");
-
                 Console.Write("\nSelect option: ");
-
-
             int option = -1;
-
             while (option != 0)
             {
                 Console.Write("\nEnter option (1-13, 0 to finish): ");
@@ -143,9 +137,76 @@
                 }
             }
 
+            //================================================================================
+
+
+
+            //Task 2 - ATM servisec
+            Console.WriteLine(" === ATM Services ===");
+            Console.WriteLine("1) Bank Info");
+            Console.WriteLine("2) Branch Info");
+            Console.WriteLine("3)  Opening Hours");
+            Console.WriteLine("0)  Back to Main Menu");
+
+            int atmOPtion = -1;
+            while (atmOPtion != 0)
+            {
+                Console.Write("\nSelect: ");
+                int atmOption = Convert.ToInt32(Console.ReadLine());
+                switch (atmOption)
+                {
+                    //bank info
+                    case 1:
+                        Console.WriteLine("\n--- Banck information ---");
+                        Console.WriteLine("National Bank of Oman");
+                        Console.WriteLine("Tagline: Trusted Banking for a Better Future");
+                        Console.WriteLine("Founded: 1973");
+                        break;
+
+                    //branch info
+                    case 2:
+                        Console.WriteLine("\n--- branch information ---");
+                        Console.WriteLine("Branch Name: Ruwi Main Branch");
+                        Console.WriteLine("City: Muscat");
+                        Console.WriteLine("Address: Sultan Qaboos Street, Ruwi, Muscat, Oman");
+                        break;
+
+                    //opening hours
+                    case 3:
+                        Console.WriteLine("\n--- opining hours ---");
+                        Console.WriteLine("Weekdays: 8:00 AM - 2:00 PM");
+                        Console.WriteLine("Weekend: Closed");
+                        break;
+
+                    //back to main menu
+                    case 0:
+                        Console.WriteLine("Returning to Main Menu...");
+                        break;
+
+                    //default case
+                    default:
+                        Console.WriteLine("Invalid selection. Please try again.");
+                        break;
+                }
+            }
+
+            //=================================================================================
+
+
+
+
+            // Task 3 - Viewer Data
+            Console.WriteLine(" === VIEW ACCOUNT DATA ===");
+            Console.WriteLine("1) Account Number -> ");
+            Console.WriteLine("2) Holder Name -> ");
+            Console.WriteLine("3) Balance -> ");
+            Console.WriteLine("4) Account Status -> ");
+            Console.WriteLine("5) Account Type -> ");
+
+
 
 
         }
-        }
+    }
     }
 
