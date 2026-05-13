@@ -147,11 +147,12 @@
             Console.WriteLine("3)  Opening Hours");
             Console.WriteLine("0)  Back to Main Menu");
 
-            int atmOPtion = -1;
-            while (atmOPtion != 0)
+            int atmOption = -1;
+            while (atmOption != 0)
             {
                 Console.Write("\nSelect: ");
-                int atmOption = Convert.ToInt32(Console.ReadLine());
+                atmOption = Convert.ToInt32(Console.ReadLine());
+
                 switch (atmOption)
                 {
                     //bank info
@@ -201,48 +202,53 @@
             Console.WriteLine("4) Account Status -> ");
             Console.WriteLine("5) Account Type -> ");
             Console.WriteLine("0) Back");
-            Console.Write("Select: ");
+            
 
-            int view;
-            view = Convert.ToUInt32(Console.ReadLine());
+            int view = -1;
+            while (view != 0)
+            { 
+                Console.Write("\nSelect: ");
+                view = Convert.ToInt32(Console.ReadLine());
+               
 
-            switch (view) {
+                switch (view)
+                {
 
-                // case 1 display account num
-                case 1:
-                    Console.WriteLine("Account Number: " + accountNumber);
-                    break;
+                    // case 1 display account num
+                    case 1:
+                        Console.WriteLine("Account Number: " + accountNumber);
+                        break;
 
-                // case 2 display holder name
-                case 2:
-                    Console.WriteLine("Holder Name: " + holderName);
-                    break;
+                    // case 2 display holder name
+                    case 2:
+                        Console.WriteLine("Holder Name: " + holderName);
+                        break;
 
-                // case 3 display balance
-                case 3:
-                    Console.WriteLine("Balance: " + balance);
-                    break;
+                    // case 3 display balance
+                    case 3:
+                        Console.WriteLine("Balance: " + balance);
+                        break;
 
-                // case 4 display account status
-                case 4:
-                    Console.WriteLine("Account Status: " + isActive);
-                    break;
+                    // case 4 display account status
+                    case 4:
+                        Console.WriteLine("Account Status: " + isActive);
+                        break;
 
-                // case 5 display account type 
-                case 5:
-                    Console.WriteLine("Account Type: " + accountType );
-                    break;
+                    // case 5 display account type 
+                    case 5:
+                        Console.WriteLine("Account Type: " + accountType);
+                        break;
 
-                // case 0 back..
-                case 0:
-                    Console.WriteLine(" Back ");
-                    break;
+                    // case 0 back..
+                    case 0:
+                        Console.WriteLine(" Back ");
+                        break;
 
-                default:
-                    Console.WriteLine(" Field not Available!");
-                    break;
+                    default:
+                        Console.WriteLine(" Field not Available!");
+                        break;
+                }
             }
-
         }
     }
     }
