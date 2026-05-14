@@ -16,10 +16,12 @@
             int p1Age = 0;
             string p1Phone = "";
             bool p1Active = false;
+
             string p2Name = "";
             int p2Age = 0;
             string p2Phone = "";
             bool p2Active = false;
+
             string p3Name = "";
             int p3Age = 0;
             string p3Phone = "";
@@ -60,6 +62,9 @@
 
 
             bool exit = false;
+            bool patientManagementExit;
+            bool doctorManagementExit;
+            bool apointmentManagementExit;
             while (exit == false)
             {
                 Console.WriteLine(" CLINIC MANAGMENT SYSTEM ");
@@ -73,7 +78,9 @@
                 switch (choic)
                 {
                     case 1:
-                        while (true)
+                        
+                        patientManagementExit=false;   
+                        while (patientManagementExit==false)
                         {
                             Console.Clear();
                             Console.WriteLine(" PATIENT MANAGEMENT ");
@@ -89,12 +96,106 @@
                             {
 
                                 case 1:
-                                    Console.WriteLine("Add New Patient");
+                                    Console.Write("Add New Patient");
+
+                                    //check clinic full
+                                    if(patientCount == MAX_PATIENTS)
+                                    {
+                                        Console.WriteLine("Clinic is full. Cannot add more patients."); 
+                                        break;
+                                    }
+                                    
+                                    // read patient name
+                                        Console.Write("Enter patient name: ");
+                                        string name = Console.ReadLine();
+                                        if (name == "")
+                                        {
+                                            Console.WriteLine("Invalid name.");
+                                            break;
+                                        }
+
+                                    //read age
+                                    Console.Write("Enter age: ");
+                                    int age = Convert.ToInt32(Console.ReadLine());
+                                    if (age < 1 || age > 120)
+                                    {
+                                        Console.WriteLine("error");
+                                        break;
+                                    }
+
+                                    //read phone
+                                    Console.Write("Enter phone number: ");
+                                    string phone = Console.ReadLine();
+
+                                    // read free slot
+                                    if (p1Active == false)
+                                    {
+                                        p1Name = name;
+                                        p1Age = age;
+                                        p1Phone = phone;
+                                        p1Active = true;
+                                    }
+                                    else if (p2Active == false)
+                                    {
+                                        p2Name = name;
+                                        p2Age = age;
+                                        p2Phone = phone;
+                                        p2Active = true;
+                                    }
+                                    else if (p3Active == false)
+                                    {
+                                        p3Name = name;
+                                        p3Age = age;
+                                        p3Phone = phone;
+                                        p3Active = true;
+                                    }
+
+                                    patientCount++;
+                                    Console.WriteLine("Patient added successfully");
                                     break;
 
                                 case 2:
                                     Console.WriteLine("Display All Patients");
+
+                                    // check if there is patient
+                                    if (patientCount == 0)
+                                    {
+                                        Console.WriteLine("No patients registered.");
+                                        break;
+                                    }
+
+                                    //check each slot
+                                    int displayNum = 1;
+                                    if (p1Active)
+                                    {
+                                        Console.WriteLine("Patient #" + displayNum);
+                                        Console.WriteLine("Patient Name" + p1Name);
+                                        Console.WriteLine("Patient Age" + p1Age);
+                                        Console.WriteLine("Patient Phone" + p1Phone);
+                                        displayNum++;
+                                    }
+
+                                    if (p2Active)
+                                    {
+                                        Console.WriteLine("Patient #" + displayNum);
+                                        Console.WriteLine("Patient Name" + p2Name);
+                                        Console.WriteLine("Patient Age" + p2Age);
+                                        Console.WriteLine("Patient Phone" + p2Phone);
+                                        displayNum++;
+                                    }
+
+                                    if (p3Active)
+                                    {
+                                        Console.WriteLine("Patient #" + displayNum);
+                                        Console.WriteLine("Patient Name" + p3Name);
+                                        Console.WriteLine("Patient Age" + p3Age);
+                                        Console.WriteLine("Patient Phone" + p3Phone);
+                                        displayNum++;
+                                    }
+
                                     break;
+
+
 
                                 case 3:
                                     Console.WriteLine("Update Patient Phone");
@@ -105,7 +206,8 @@
                                     break;
 
                                 case 0:
-                                    Console.WriteLine("Exit");
+                                    Console.WriteLine("Back to Main Menu");
+                                    patientManagementExit = true;
                                     break;
 
                                 default:
@@ -114,17 +216,18 @@
                             }
                         }
 
-
+                        break;
 
                     case 2:
-                        while (true)
+                        doctorManagementExit = false;
+                        while (doctorManagementExit = false)
                         {
                             Console.Clear();
-                            Console.WriteLine(" Doctor Managment ");
+                            Console.WriteLine("  DOCTOR MANAGEMENT ");
                             Console.WriteLine("1. Add new Doctor");
-                            Console.WriteLine("2. Display All Patients");
-                            Console.WriteLine("3. Update Patient Phone");
-                            Console.WriteLine("4. Delete Patient");
+                            Console.WriteLine("2. Display All Doctors");
+                            Console.WriteLine("3.  Update Consultation Fee");
+                            Console.WriteLine("4. Delete Doctor ");
                             Console.WriteLine("0. Back to Main Menu");
                             Console.Write("Enter your choic: ");
 
@@ -133,23 +236,72 @@
                             {
 
                                 case 1:
-                                    Console.WriteLine("Add New Patient");
+                                    Console.WriteLine("Add New Doctor");
                                     break;
 
                                 case 2:
-                                    Console.WriteLine("Display All Patients");
+                                    Console.WriteLine("Display All Doctors");
                                     break;
 
                                 case 3:
-                                    Console.WriteLine("Update Patient Phone");
+                                    Console.WriteLine(" Update Consultation Fee");
                                     break;
 
                                 case 4:
-                                    Console.WriteLine("Delete Patient");
+                                    Console.WriteLine("Delete Doctor");
                                     break;
 
                                 case 0:
-                                    Console.WriteLine("Exit");
+                                    Console.WriteLine("Back to Main Menu");
+                                    doctorManagementExit = true;
+                                    break;
+
+                                default:
+                                    Console.WriteLine("Invalid choice!");
+                                    break;
+                            }
+                        }
+                        break;
+
+
+
+                    case 3:
+
+                        apointmentManagementExit = false;
+                        while (apointmentManagementExit == false)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("  APPOINTMENT MANAGEMENT ");
+                            Console.WriteLine("1. Book New Appointment");
+                            Console.WriteLine("2. Display All Appointments");
+                            Console.WriteLine("3. Update Appointment Status");
+                            Console.WriteLine("4.  Cancel Appointment");
+                            Console.WriteLine("0. Back to Main Menu");
+                            Console.Write("Enter your choic: ");
+
+                            int Pchoose = Convert.ToInt32(Console.ReadLine());
+                            switch (Pchoose)
+                            {
+
+                                case 1:
+                                    Console.WriteLine("Book New Appointment");
+                                    break;
+
+                                case 2:
+                                    Console.WriteLine("Display All Appointments");
+                                    break;
+
+                                case 3:
+                                    Console.WriteLine("Update Appointment Status");
+                                    break;
+
+                                case 4:
+                                    Console.WriteLine(" Cancel Appointment");
+                                    break;
+
+                                case 0:
+                                    Console.WriteLine("Back to Main Menu");
+                                    apointmentManagementExit = true;
                                     break;
 
                                 default:
@@ -158,16 +310,6 @@
                             }
                         }
 
-
-
-
-
-
-                   
-
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine("Appointment Managment Menue");
                         break;
 
                     case 0:
@@ -182,29 +324,8 @@
             }
 
 
-            //───────────────────────── Region 3 ─────────────────────────────────────────────── 
 
-
-            int option = Convert.ToInt32(Console.ReadLine());
-            bool stop = false;
-            while (stop == false)
-            {
-
-                switch (option)
-                {
-
-              
-
-
-                }
-
-
-            }
-
-
-
-
-
+         
 
 
         }
