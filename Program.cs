@@ -2,11 +2,11 @@
 {
     internal class Program
     {
-        public static int MAX_ATTEMPTS { get; private set; }
-        public static int CORRECT_PIN { get; private set; }
+      
 
         static void Main(string[] args)
         {
+
             //variables
             int accountNumber = 0;
             string holderName = "";
@@ -51,6 +51,8 @@
                 Console.Write("\nEnter option (1-13, 0 to finish): ");
                 option = Convert.ToInt32(Console.ReadLine());
 
+              
+
                 switch (option)
                 {
                     case 1:
@@ -93,6 +95,8 @@
                         Console.Write("Enter Salary: ");
                         salary = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine($"set Salary to: {salary:F3} OMR");
+                        //Console.WriteLine("set Salary to:" + salary+ " OMR");
+
                         break;
 
                     case 8:
@@ -145,15 +149,16 @@
 
 
             //Task 2 - ATM servisec
-            Console.WriteLine(" === ATM Services ===");
-            Console.WriteLine("1) Bank Info");
-            Console.WriteLine("2) Branch Info");
-            Console.WriteLine("3)  Opening Hours");
-            Console.WriteLine("0)  Back to Main Menu");
+
 
             int atmOption = -1;
             while (atmOption != 0)
             {
+                Console.WriteLine(" === ATM Services ===");
+                Console.WriteLine("1) Bank Info");
+                Console.WriteLine("2) Branch Info");
+                Console.WriteLine("3)  Opening Hours");
+                Console.WriteLine("0)  Back to Main Menu");
                 Console.Write("\nSelect: ");
                 atmOption = Convert.ToInt32(Console.ReadLine());
 
@@ -275,6 +280,11 @@
                 switch (auth)
                 {
                     // Enter PIN
+
+                    // invalid format -> size not 4
+                    // Access granted -> number is correct
+                    // incorect pin
+
                     case 1:
                         int attempts = 0;
                         bool accessGranted = false;
@@ -288,15 +298,20 @@
                             // Hidden PIN input
                             do
                             {
-                                key = Console.ReadKey(true);
+                                key = Console.ReadKey(true); // read from keyboard
 
-                                if (key.Key != ConsoleKey.Enter)
+                                if (key.Key == ConsoleKey.Delete || key.Key == ConsoleKey.Spacebar)  // if the key not enter
                                 {
-                                    pinInput += key.KeyChar;
-                                    Console.Write("*");
+
                                 }
 
-                            } while (key.Key != ConsoleKey.Enter);
+                                if (key.Key != ConsoleKey.Enter)  // if the key not enter
+                                {
+                                    pinInput += key.KeyChar;
+                                    Console.Write("*"); // show *
+                                }
+
+                            } while (key.Key != ConsoleKey.Enter); // continue repeat if the the user not click to enter. it will stop here
 
                             Console.WriteLine();
                             // here is problem, becaues also when i press in delete key so =  i will ask mr.karim!!
@@ -324,19 +339,19 @@
 
 
 
-                            if (pinInput.Length != 4)
+                            if (pinInput.Length != 4)  // check the size of pin 
                             {
                                 Console.WriteLine("Invalid PIN format.");
                             }
-                            else if (Convert.ToInt32(pinInput) == CORRECT_PIN)
+                            else if (Convert.ToInt32(pinInput) == CORRECT_PIN) // the num input is it = to "4821"
                             {
                                 Console.WriteLine($"Access granted. Welcome, {holderName}");
-                                accessGranted = true;
+                                accessGranted = true;  // the enterd success, i use it because i have loop
                             }
                             else
                             {
-                                Console.WriteLine("Incorrect PIN.");
-                                attempts++;
+                                Console.WriteLine("Incorrect PIN."); // the size correct but the number is false
+                                attempts++;  // every time increse 1
                             }
                         }
                         break;
@@ -429,9 +444,10 @@
             //=================================================================================
 
 
-            // Task 6 - 
+            // Task 6 - Transaction Calculator
 
 
+            // balance after deposit
 
 
 
