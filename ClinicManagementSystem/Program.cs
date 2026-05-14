@@ -82,7 +82,7 @@
                         patientManagementExit=false;   
                         while (patientManagementExit==false)
                         {
-                            Console.Clear();
+                            
                             Console.WriteLine(" PATIENT MANAGEMENT ");
                             Console.WriteLine("1. Add new Patint");
                             Console.WriteLine("2. Display All Patients");
@@ -195,14 +195,82 @@
 
                                     break;
 
-
-
                                 case 3:
                                     Console.WriteLine("Update Patient Phone");
+                                    // read patient name
+                                    Console.Write("Enter patient name: ");
+                                    string searchName = Console.ReadLine();
+                                    
+                                    // check patinet 1
+                                    if(p1Active && p1Name == searchName)
+                                    {
+                                        Console.Write("Enter new phone: ");
+                                        string newPhone = Console.ReadLine();
+                                        p1Phone = newPhone;
+                                        Console.WriteLine("Updated..");
+                                    }
+                                    // check patinet 2
+                                    if (p2Active && p2Name == searchName)
+                                    {
+                                        Console.Write("Enter new phone: ");
+                                        string newPhone = Console.ReadLine();
+                                        p2Phone = newPhone;
+                                        Console.WriteLine("Updated..");
+                                    }
+                                    // check patinet 3
+                                    if (p3Active && p3Name == searchName)
+                                    {
+                                        Console.Write("Enter new phone: ");
+                                        string newPhone = Console.ReadLine();
+                                        p3Phone = newPhone;
+                                        Console.WriteLine("Updated..");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Patient not found.");
+                                    }
+
                                     break;
 
                                 case 4:
                                     Console.WriteLine("Delete Patient");
+
+                                    //read patient name
+                                    Console.Write("Enter patient name: ");
+                                    string deleteName = Console.ReadLine();
+
+                                    //check patient 1 
+                                    if (p1Active && p1Name == deleteName)
+                                    {
+                                        p1Active = false;
+                                        p1Name = "";
+                                        p1Age = 0;
+                                        p1Phone = "";
+                                        patientCount--;
+                                        Console.WriteLine("Patient deleted.");
+                                    }
+                                    else if (p2Active && p2Name == deleteName)
+                                    {
+                                        p2Active = false;
+                                        p2Name = "";
+                                        p2Age = 0;
+                                        p2Phone = "";
+                                        patientCount--;
+                                        Console.WriteLine("Patient deleted.");
+                                    }
+                                    else if (p3Active && p3Name == deleteName)
+                                    {
+                                        p3Active = false;
+                                        p3Name = "";
+                                        p3Age = 0;
+                                        p3Phone = "";
+                                        patientCount--;
+                                        Console.WriteLine("Patient deleted.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Patient not found.");
+                                    }
                                     break;
 
                                 case 0:
@@ -217,6 +285,18 @@
                         }
 
                         break;
+
+
+
+
+
+
+
+
+
+
+
+
 
                     case 2:
                         doctorManagementExit = false;
